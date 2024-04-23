@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-flask-deployment
+  name: python-flask
+  labels:
+    app: python-flask
 spec:
-  replicas: 2  # Number of desired replicas
+  replicas: 2
   selector:
     matchLabels:
       app: python-flask
@@ -12,8 +14,10 @@ spec:
       labels:
         app: python-flask
     spec:
+      terminationGracePeriodSeconds: 30
       containers:
       - name: python-flask-cont
         image: baluomkar/python-flask:latest
+        imagePullPolicy: "Always"
         ports:
-        - containerPort: 5000  # Port your application listens on
+        - containerPort: 5000
