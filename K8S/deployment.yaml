@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: python-flask-deployment
 spec:
-  replicas: 2  # Number of desired replicas
+  replicas: 1  # Number of desired replicas
   selector:
     matchLabels:
       app: python-flask
@@ -13,7 +13,7 @@ spec:
         app: python-flask
     spec:
       containers:
-      - name: python-flask-cont
-        image: baluomkar/python-flask-app:latest
+      - name: python-flask
+        image: baluomkar/simple-flask-app:latest
         ports:
         - containerPort: 5000  # Port your application listens on
