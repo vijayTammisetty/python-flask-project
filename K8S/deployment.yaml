@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: python-flask-cont
-        image: baluomkar/python-flask:latest
+        image: baluomkar/python-flask-app:latest
         ports:
         - containerPort: 5000  # Port your application listens on
