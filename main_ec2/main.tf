@@ -1,7 +1,7 @@
 resource "aws_instance" "web" {
-  ami                    = "ami-0277155c3f0ab2930"      #change ami id for different region
+  ami                    = "ami-001843b876406202a"      #change ami id for different region
   instance_type          = "t2.large"
-  key_name               = "vscode"              #change key name as per your setup
+  key_name               = "rollback"              #change key name as per your setup
   vpc_security_group_ids = [aws_security_group.devops-project-veera.id]
   user_data              = templatefile("./install.sh", {})
 
@@ -19,7 +19,7 @@ resource "aws_security_group" "devops-project-veera" {
   description = "Allow TLS inbound traffic"
 
   ingress = [
-    for port in [22, 80, 443, 8080, 9000, 3000, 8082, 8081] : {
+    for port in [22, 80, 443, 8080, 9000, 3000, 8082, 8081,5000] : {
       description      = "inbound rules"
       from_port        = port
       to_port          = port
